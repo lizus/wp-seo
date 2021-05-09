@@ -39,7 +39,7 @@ function seo_resolve_format($title){
             $post_keywords=rtrim($post_keywords,',');//%post-keywords%
         }
 		if (empty($post_keywords)) $post_keywords='';//%post-keywords%
-		$post_excerpt=\LizusFunction\cut_text($q->post_content);//%post-excerpt%
+		$post_excerpt=\LizusFunction\cut_text($q->post_content,80);//%post-excerpt%
 		$post_author=$q->post_author;
         $post_author=\get_userdata($post_author);
         $post_author=$post_author->display_name;//%post-author%
