@@ -37,8 +37,23 @@
 * `SEO_DESCRIPTION` : &lt;array&gt; - seo用页面描述模板
 
 ## 支持的filter
-* `add_filter('v_title','')` - seo title
-* `add_filter('v_keywords','')` - seo keywords
-* `add_filter('v_description','')` - seo description
-* `add_filter('seo_resolve_format',$string)` - 添加模板可用标签解析，回调函数传入一个参数为需要解析的文本字符串
-* `add_filter('v_og','')` - 添加og标签
+要注意的是，v_title,v_keywords,v_description这三个filter的执行通常会晚于模板标签解析。
+* `add_filter('seo_resolve_format',fn($str))` - 添加模板可用标签解析，回调函数传入一个参数为需要解析的文本字符串，执行完后返回解析后的字符串即可
+* `add_filter('v_title',fn($str))` - seo title
+* `add_filter('v_keywords',fn($str))` - seo keywords
+* `add_filter('v_description',fn($str))` - seo description
+* `add_filter('v_og',fn($og))` - 添加og标签,og的传值为键值对数组
+    > https://ogp.me/
+        示例：
+        $og=[
+            'title'=>'',
+            'url'=>'',
+            'description'=>'',
+            'type'=>'',
+            'site_name'=>'',
+            'image'=>'',
+            'image:secure_url'=>'',
+            'image:alt'=>'',
+            'article:published_time'=>get_the_time('Y-m-d H:i:s'),
+            'article:author'=>'',
+        ];
